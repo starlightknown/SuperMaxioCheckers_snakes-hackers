@@ -36,7 +36,7 @@ python3 main.py
    For Windows systems,
 
 ```shell
-python main_windows.py 
+python main.py 
 ```
 
 5. Let it run !

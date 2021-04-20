@@ -4,16 +4,6 @@ from checkers.game import Game
 from checkers.minimax.algorithm import minimax
 from pygame import mixer
 
-
-
-FPS = 60
-
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Checkers')
-pygame.mixer.init()
-mixer.music.load('background.wav')
-mixer.music.play(-1)
-
 def get_row_col_from_mouse(pos):
     x, y = pos
     row = y // SQUARE_SIZE
@@ -21,6 +11,12 @@ def get_row_col_from_mouse(pos):
     return row, col
 
 def main():
+    FPS = 60
+    WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption('Checkers')
+    pygame.mixer.init()
+    mixer.music.load('background.wav')
+    mixer.music.play(-1)
     run = True
     clock = pygame.time.Clock()
     game = Game(WIN)
@@ -30,24 +26,20 @@ def main():
         if game.turn == BLUE:
             value, new_board = minimax(game.get_board(), 3, BLUE, game)
             game.ai_move(new_board)
-
         if game.winner() != None:
             print(game.winner())
-            run = False 
-
+            run = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-            
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 row, col = get_row_col_from_mouse(pos)
                 game.select(row, col)
-
         game.update()
-    
     pygame.quit()
 
-main()
+if __name__ == '__main__':
+    main()
 
        

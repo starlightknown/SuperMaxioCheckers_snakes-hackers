@@ -1,7 +1,7 @@
 import pygame
 from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED, BLUE, CROWN
 from checkers.game import Game
-from minimax.algorithm import minimax
+from algorithm.minimax import algorithm
 from pygame import mixer
 
 

@@ -1,7 +1,7 @@
 import pygame
 from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED, BLUE, CROWN
 from checkers.game import Game
-from checkers.minimax.algorithm import minimax
+from checkers.algorithm.minimax import algorithm
 from pygame import mixer
 
 def get_row_col_from_mouse(pos):

@@ -23,23 +23,31 @@ def main():
 
     while run:
         clock.tick(FPS)
+
         if game.turn == BLUE:
             value, new_board = minimax(game.get_board(), 3, BLUE, game)
             game.ai_move(new_board)
-        if game.winner() != None:
-            print(game.winner())
+
+        winner = game.winner()
+        if winner != None:
+            print(winner)
             run = False
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+
             if event.type == pygame.MOUSEBUTTONDOWN:
-                pos = pygame.mouse.get_pos()
-                row, col = get_row_col_from_mouse(pos)
+                mouse_pos = pygame.mouse.get_pos()
+                row, col = get_row_col_from_mouse(mouse_pos)
                 game.select(row, col)
+
         game.update()
+
     pygame.quit()
 
-if __name__ == '__main__':
-    main()
+
+main()
+
 
        

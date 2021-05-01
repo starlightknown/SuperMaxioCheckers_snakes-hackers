@@ -63,7 +63,7 @@ class Game():
         self.turn = BLUE if self.turn == RED else RED
 
     def winner(self):
-        return self.board.winner()
+        return self.board.winner(self.turn)
 
     def get_board(self):
         return self.board

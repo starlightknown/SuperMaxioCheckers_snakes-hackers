@@ -1,11 +1,9 @@
 import pygame
-import os
-from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED, BLUE, CROWN
-from checkers.game import Game
-from checkers.algorithm.minimax import minimax
 from pygame import mixer
-from tkinter import *
-from tkinter import messagebox
+from checkers.config import WIDTH, HEIGHT, SQUARE_SIZE, RED, WHITE, BLUE
+from checkers.game import Game
+from helpers import get_row_col_from_mouse
+from minimax.algorithm import minimax
 from tkinter import *
 from tkinter import messagebox
 Tk().wm_withdraw() #to hide the main window
@@ -16,19 +14,15 @@ messagebox.showinfo('How to play?','RULES:The opponent with the red pieces moves
                                    'If your piece reaches the last row on your opponent side,you may re-take one of your captured pieces and give super mario power to the piece that made it.'
                                    'There is no limit to how many Super marios a player may have.'
                                    'The first player to lose all of his or her pieces loses the game.'
-                                   ' If a player is put in a position where they cannot move, they lose.'
+                                   ' If a player is put in a position where they cannot move, they lose.'                                  
                                    ' If the players have the same amount of pieces, the player with the most double pieces wins.')
 
-def get_row_col_from_mouse(pos):
-    x, y = pos
-    row = y // SQUARE_SIZE
-    col = x // SQUARE_SIZE
-    return row, col
+FPS = 60
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption('SuperMaxio')
+
 
 def main():
-    FPS = 60
-    WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption('SuperMaxio')
     pygame.mixer.init()
     mixer.music.load('background.wav')
     mixer.music.play(-1)
@@ -45,8 +39,7 @@ def main():
 
         winner = game.winner()
         if winner != None:
-            Tk().wm_withdraw() #to hide the main window
-            messagebox.showinfo('Winner', "you won")
+            messagebox.showinfo("Winner", f"{winner}You won smarty pants!")
             run = False
 
         for event in pygame.event.get():
@@ -61,11 +54,6 @@ def main():
         game.update()
 
     pygame.quit()
-    exit()
-
-if __name__ == '__main__':
-    main()
 
 
-
-       
+main()

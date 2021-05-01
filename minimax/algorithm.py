@@ -4,7 +4,7 @@ import pygame
 
 
 def minimax(board, depth, max_player, game):
-    if depth == 0 or board.winner() != None:
+    if depth == 0 or board.winner(BLUE if max_player else RED) != None:
         return board.evaluate(), board
 
     if max_player:

@@ -30,21 +30,21 @@ def main():
     clock = pygame.time.Clock()
     game = Game(WIN)
 
-    while run:
+    while True:
         clock.tick(FPS)
-
-        if game.turn == BLUE:
-            value, new_board = minimax(game.get_board(), 3, BLUE, game)
-            game.ai_move(new_board)
 
         winner = game.winner()
         if winner != None:
             messagebox.showinfo("Winner", "{0}! You won smarty pants!".format("Red" if winner == (255,0,0) else "Blue"))
-            run = False
+            break
 
+        if game.turn == BLUE:
+            value, new_board = minimax(game.get_board(), 3, BLUE, game)
+            game.ai_move(new_board)
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run = False
+                break
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()

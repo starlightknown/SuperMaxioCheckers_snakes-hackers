@@ -47,13 +47,11 @@ class Board:
                 else:
                     self.blue_left -= 1
 
-    def winner(self):
-        if self.red_left <= 0:
-            return BLUE
-        elif self.blue_left <= 0:
-            return RED
-
-        return None
+    def winner(self, turn):
+        for piece in self.get_all_pieces(turn):
+            if len(self.get_valid_moves(piece)) != 0:
+                return None
+        return RED if turn == BLUE else BLUE
 
     def move(self, piece, row, col):
         self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]

@@ -39,7 +39,7 @@ def main():
 
         winner = game.winner()
         if winner != None:
-            messagebox.showinfo("Winner", f"{winner}You won smarty pants!")
+            messagebox.showinfo("Winner", "{0}! You won smarty pants!".format("Red" if winner == (255,0,0) else "Blue"))
             run = False
 
         for event in pygame.event.get():

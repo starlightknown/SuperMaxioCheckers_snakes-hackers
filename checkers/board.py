@@ -59,7 +59,7 @@ class Board:
         self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
         piece.move(row, col)
 
-        if row == ROWS - 1 or row == 0:
+        if row in [ROWS - 1, 0]:
             piece.make_king()
             if piece.color == BLUE:
                 self.blue_kings += 1

@@ -1,38 +1,44 @@
 from copy import deepcopy
+from checkers.config import RED, BLUE
 import pygame
 
-RED = (255,0,0)
-BLUE = (0, 0, 255)
 
-def minimax(position, depth, max_player, game):
-    if depth == 0 or position.winner() != None:
-        return position.evaluate(), position
+def minimax(board, depth, max_player, game):
+    if depth == 0 or board.winner() != None:
+        return board.evaluate(), board
 
-    best_move = None
     if max_player:
-        maxEval = float('-inf')
-        for move in get_all_moves(position, BLUE, game):
-            evaluation = minimax(move, depth-1, False, game)[0]
-            maxEval = max(maxEval, evaluation)
-            if maxEval == evaluation:
+        max_eval = float('-inf')
+        best_move = None
+        for move in get_all_moves(board, BLUE, game):
+            evaluation = minimax(move, depth - 1, False, game)[0]
+            max_eval = max(max_eval, evaluation)
+            if max_eval == evaluation:
                 best_move = move
-        return maxEval, best_move
+
+        return max_eval, best_move
     else:
-        minEval = float('inf')
-        for move in get_all_moves(position, RED, game):
-            evaluation = minimax(move, depth-1, True, game)[0]
-            minEval = min(minEval, evaluation)
-            if minEval == evaluation:
+        min_eval = float('inf')
+        best_move = None
+        for move in get_all_moves(board, RED, game):
+            evaluation = minimax(move, depth - 1, True, game)[0]
+            min_eval = min(min_eval, evaluation)
+            if min_eval == evaluation:
                 best_move = move
-        return minEval, best_move  
+
+        return min_eval, best_move
+
 
 def simulate_move(piece, move, board, game, skip):
     board.move(piece, move[0], move[1])
     if skip:
         board.remove(skip)
-    return board        
+
+    return board
+
+
 def get_all_moves(board, color, game):
-    moves= []
+    moves = []
 
     for piece in board.get_all_pieces(color):
         valid_moves = board.get_valid_moves(piece)
@@ -42,12 +48,13 @@ def get_all_moves(board, color, game):
             temp_piece = temp_board.get_piece(piece.row, piece.col)
             new_board = simulate_move(temp_piece, move, temp_board, game, skip)
             moves.append(new_board)
-    
-    return moves 
-def draw_moves(game,board,piece):
+
+    return moves
+
+def draw_moves(game, board, piece):
     valid_moves = board.get_valid_moves(piece)
     board.draw(game.win)
     pygame.draw.circle(game.win, (0, 255, 0), (piece.x, piece.y), 50, 5)
     game.draw_valid_moves(valid_moves.keys())
     pygame.display.update()
-    
+

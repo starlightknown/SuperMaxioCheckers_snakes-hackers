@@ -35,7 +35,7 @@ def main():
 
         winner = game.winner()
         if winner != None:
-            messagebox.showinfo("Winner", "{0}! You won smarty pants!".format("Red" if winner == (255,0,0) else "Blue"))
+            messagebox.showinfo("Winner", "{0}! won the game!".format("Red" if winner == (255,0,0) else "Blue"))
             break
 
         if game.turn == BLUE:

@@ -7,9 +7,9 @@ def minimax(board, depth, max_player, game):
     if depth == 0 or board.winner(BLUE if max_player else RED) != None:
         return board.evaluate(), board
 
+    best_move = None
     if max_player:
         max_eval = float('-inf') #max_player maximizes, worst case -infinity
-        best_move = None
         for move in get_all_moves(board, BLUE, game):
             evaluation = minimax(move, depth - 1, False, game)[0]
             max_eval = max(max_eval, evaluation)
@@ -19,7 +19,6 @@ def minimax(board, depth, max_player, game):
         return max_eval, best_move
     else:
         min_eval = float('inf') #worst case +infinity
-        best_move = None
         for move in get_all_moves(board, RED, game):
             evaluation = minimax(move, depth - 1, True, game)[0]
             min_eval = min(min_eval, evaluation)

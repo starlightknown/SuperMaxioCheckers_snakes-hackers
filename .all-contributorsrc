@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "GaryNLOL",
+      "name": "GaryNLOL",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46727048?v=4",
+      "profile": "https://github.com/GaryNLOL",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "SuperMaxioCheckers_snakes-hackers",
+  "projectOwner": "starlightknown",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

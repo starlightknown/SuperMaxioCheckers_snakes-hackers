@@ -20,7 +20,7 @@ Made with Pygame
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-[![checkers](EssentialLoneBlackfootedferret-size_restricted.gif)]
+[![checkers](assets/supermaxio.gif)]
 ---
 
 

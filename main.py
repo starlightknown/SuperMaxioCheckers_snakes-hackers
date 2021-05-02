@@ -3,7 +3,7 @@ from pygame import mixer
 from checkers.config import WIDTH, HEIGHT, SQUARE_SIZE, RED, WHITE, BLUE
 from checkers.game import Game
 from helpers import get_row_col_from_mouse
-from minimax.algorithm import minimax
+from algorithm.minimax import minimax
 from tkinter import *
 from tkinter import messagebox
 Tk().wm_withdraw() #to hide the main window

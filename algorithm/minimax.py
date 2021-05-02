@@ -1,14 +1,14 @@
-from copy import deepcopy
+from copy import deepcopy  
 from checkers.config import RED, BLUE
 import pygame
 
-
+#checks till last node / winner 
 def minimax(board, depth, max_player, game):
     if depth == 0 or board.winner(BLUE if max_player else RED) != None:
         return board.evaluate(), board
 
     if max_player:
-        max_eval = float('-inf')
+        max_eval = float('-inf') #max_player maximizes, worst case -infinity
         best_move = None
         for move in get_all_moves(board, BLUE, game):
             evaluation = minimax(move, depth - 1, False, game)[0]
@@ -18,7 +18,7 @@ def minimax(board, depth, max_player, game):
 
         return max_eval, best_move
     else:
-        min_eval = float('inf')
+        min_eval = float('inf') #worst case +infinity
         best_move = None
         for move in get_all_moves(board, RED, game):
             evaluation = minimax(move, depth - 1, True, game)[0]
@@ -37,8 +37,8 @@ def simulate_move(piece, move, board, game, skip):
     return board
 
 
-def get_all_moves(board, color, game):
-    moves = []
+def get_all_moves(board, color, game):  
+    moves = []  #ai adds moves to the list
 
     for piece in board.get_all_pieces(color):
         valid_moves = board.get_valid_moves(piece)
@@ -51,7 +51,7 @@ def get_all_moves(board, color, game):
 
     return moves
 
-def draw_moves(game, board, piece):
+def draw_moves(game, board, piece):  
     valid_moves = board.get_valid_moves(piece)
     board.draw(game.win)
     pygame.draw.circle(game.win, (0, 255, 0), (piece.x, piece.y), 50, 5 )

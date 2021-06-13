@@ -2,7 +2,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-This game is designed for MLH Snakes and Hackers hackathon.
+This game is designed for the MLH Snakes and Hackers hackathon.
 # Theme - board games
 
 ## Table Of Contents:
